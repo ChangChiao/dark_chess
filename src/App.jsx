@@ -1,70 +1,7 @@
 import { useState, useEffect } from 'react'
+import { CHESS_LIST, ROW, COL, combineChess } from "./utils"
+import Chess from './component/Chess'
 import './App.css'
-
-const chessList = {
-  R1: '兵',
-  R2: '炮',
-  R3: '傌',
-  R4: '俥',
-  R5: '相',
-  R6: '仕',
-  R7: '帥',
-  B1: '卒',
-  B2: '砲',
-  B3: '馬',
-  B4: '車',
-  B5: '象',
-  B6: '士',
-  B7: '將',
-}
-
-const redChess = {
-}
-
-const blackChess = {
-
-}
-
-const createChess = (obj) => {
-  let empty = []
-  const arr = Object.keys(obj)
-  arr.forEach(item => {
-    const level = item.substr(1, 1)
-    if (level === '7') {
-      empty.push(item)
-    } else if (level === '1') {
-      empty = empty.concat([item, item, item, item, item])
-    } else {
-      empty = empty.concat([item, item])
-    }
-  })
-  return empty
-}
-
-const row = 8;
-const col = 4;
-
-const random = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const randomChess = (all, chess) => {
-  const num = random(0, chess.length - 1)
-  const [target] = chess.splice(num, 1)
-  all.push(target)
-  if (chess.length > 0) {
-    randomChess(all, chess)
-  }
-  return all
-
-}
-
-const combineChess = () => {
-  const list = createChess(chessList)
-  const finial = randomChess([], list)
-  return finial;
-}
-
 
 
 const bigThan = () => {
@@ -72,26 +9,28 @@ const bigThan = () => {
 }
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [trun, setTurn] = useState(1)
-  const [chess, setChess] = useState([])
+  const [count, setCount] = useState(0) //紀錄被吃掉的棋子
+  const [active, setActive] = useState(-1) //紀錄被選中的格子
+  const [trun, setTurn] = useState(1)//紀錄當前遊戲方
+  const [upList, setUpList] = useState([]) //紀錄被翻過的棋子
+  const [chess, setChess] = useState([]) //紀錄棋子位置
   const init = () => {
     setChess(combineChess())
-
   }
   useEffect(() => {
     init()
+    console.log("start");
   }, []);
 
   return (
-    <div className="App">
-      <div className='flex'>
+    <div className="App h-screen flex justify-center items-center">
+      <div className='flex border line'>
         {
-          Array.from({ length: col }).map((vo, i) => {
+          Array.from({ length: chess.length / ROW }).map((vo, i) => {
             return (
-              <ul className='' key={'col'+ i}>
+              <ul className='border-r line' key={'col' + i}>
                 {
-                  Array.from({ length: row }).map((item, j) => <li className=' w-6 h-6' key={'row'+ j}>{chessList[chess[i + j]]}</li>)
+                  Array.from({ length: ROW }).map((item, j) => <Chess key={'row' + j} data={chess[i * ROW + j]} />)
                 }
               </ul>
             )

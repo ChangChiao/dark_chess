@@ -1,4 +1,7 @@
-const CHESS_LIST = {
+
+export const ROW = 8;
+export const COL = 4;
+export const CHESS_LIST = {
     R1: '兵',
     R2: '炮',
     R3: '傌',
@@ -13,4 +16,4 @@ const CHESS_LIST = {
     B5: '象',
     B6: '士',
     B7: '將',
-  }
+}
