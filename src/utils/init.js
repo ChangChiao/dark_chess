@@ -1,16 +1,32 @@
 import { random, CHESS_LIST } from "./index"
+import { v4 as uuidv4 } from 'uuid';
+const basicSetting = () => {
+  let arr = Object.keys(CHESS_LIST)
+  arr = arr.map((vo, i) => { 
+    return {id: uuidv4(), type: vo, isOpen: false} 
+  })
+  return arr
+}
 
-const createChess = (obj) => {
+const createReapeat = (count, item) => {
+  let temp = []
+  for( let i=0;i<count;i++){
+    temp.push({...item, id: uuidv4()})
+  }
+  return temp
+}
+
+const createChess = () => {
     let empty = []
-    const arr = Object.keys(obj)
+    const arr = basicSetting()
     arr.forEach(item => {
-      const level = item.substr(1, 1)
+      const level = item.type.substr(1, 1)
       if (level === '7') {
-        empty.push(item)
+        empty = empty.concat(createReapeat(1, item))
       } else if (level === '1') {
-        empty = empty.concat([item, item, item, item, item])
+        empty = empty.concat(createReapeat(5, item))
       } else {
-        empty = empty.concat([item, item])
+        empty = empty.concat(createReapeat(2, item))
       }
     })
     return empty
@@ -25,11 +41,11 @@ const createChess = (obj) => {
       randomChess(all, chess)
     }
     return all
-  
   }
   
   export const combineChess = () => {
-    const list = createChess(CHESS_LIST)
+    const list = createChess()
     const finial = randomChess([], list)
+    console.log("eeee", finial);
     return finial;
   }
