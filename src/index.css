@@ -22,7 +22,7 @@ body{
     }
     
     .chess{
-        @apply rounded-full border-2 border-black w-16 h-16 text-3xl flex justify-center items-center shadow-sm;
+        @apply rounded-full font-bold border-2 border-black w-16 h-16 text-3xl flex justify-center items-center shadow-sm;
     }
     .back{
         @apply border-none bg-green-700;

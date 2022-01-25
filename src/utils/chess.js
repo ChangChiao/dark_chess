@@ -1,5 +1,3 @@
-import Chess from "../component/Chess"
-
 const normal = [[0, -1], [1, 0], [0, 1], [-1, 0]] //一般路徑
 const bomb = [[0, -2], [2, 0], [0, 2], [-2, 0]] //砲路徑
 
