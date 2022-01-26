@@ -27,5 +27,8 @@ body{
     .back{
         @apply border-none bg-green-700;
     }
+    .dot{
+        @apply rounded-full w-7 h-7 block ;
+    }
 
 }
