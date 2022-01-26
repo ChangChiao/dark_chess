@@ -22,13 +22,13 @@ body{
     }
     
     .chess{
-        @apply rounded-full font-bold border-2 border-black w-16 h-16 text-3xl flex justify-center items-center shadow-sm;
+        @apply rounded-full font-bold border-2 border-black w-16 h-16 text-3xl flex justify-center items-center shadow-sm cursor-pointer;
     }
     .back{
         @apply border-none bg-green-700;
     }
     .dot{
-        @apply rounded-full w-7 h-7 block ;
+        @apply rounded-full w-7 h-7 block ml-2;
     }
 
 }
