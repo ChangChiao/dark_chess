@@ -70,7 +70,6 @@ function App() {
       setActive(null)
       return
     }
-    console.log("8777777", id);
     //是否選擇第二個棋子
     if (active.id !== id) {
       if (isSelf) return
@@ -88,7 +87,6 @@ function App() {
         console.log("no-id");
         moveChess(selfIndex, targetIndex)
       } else {
-        console.log("isBomb", isBomb);
         console.log(checkCanEat(active.type, type), "checkCanEat");
         if (checkCanEat(active.type, type)) {
           moveChess(selfIndex, targetIndex)
@@ -131,7 +129,6 @@ function App() {
 
   const decidePlayer = (type) => {
     const color = getColor(type)
-    console.log(type, 33);
     color === "B" ?
       setPlayer({ player1: 'B', player2: 'R' }) :
       setPlayer({ player1: 'R', player2: 'B' })
