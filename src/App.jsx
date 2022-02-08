@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import {
-  CHESS_LIST,
   checkStep,
+  checkBombStep,
   checkCanEat,
   ROW, COL, combineChess, getColor, getLevel
 } from "./utils"
@@ -82,8 +82,8 @@ function App() {
       //點到空白處
       console.warn("selfIndex", selfIndex);
       console.warn("targetIndex", targetIndex);
-      console.log(checkStep(selfIndex, targetIndex), "checkStep");
-      if (!checkStep(selfIndex, targetIndex, isBomb)) return
+      let isCanMove = !isBomb ? checkStep(selfIndex, targetIndex): checkBombStep(selfIndex, targetIndex, chess)
+      if (!isCanMove) return
       if (!id) {
         console.log("no-id");
         moveChess(selfIndex, targetIndex)
