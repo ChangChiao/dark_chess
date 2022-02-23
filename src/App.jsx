@@ -115,8 +115,6 @@ function App() {
     temp[targetIndex] = temp[selfIndex];
     temp[selfIndex] = { id: "", type: "", isOpen: true, index:selfIndex }
     setChess(temp)
-    console.warn('temp[targetIndex]', temp[targetIndex]);
-    console.warn("temp[selfIndex]", temp[selfIndex]);
   }
 
 
@@ -154,11 +152,11 @@ function App() {
 
   return (
     <div className="App h-screen flex justify-center items-center">
-      <ul className=" absolute top-8 text-xl">
-        <li>玩家1:{transPlayer(player1)}</li>
-        <li>玩家2:{transPlayer(player2)}</li>
+      <ul className="top-8 text-xl text-left mr-6 border-dotted border-2 border-gray-500 p-4">
+        <li className="flex pb-2">玩家1:{transPlayer(player1)} <span className={clsx("dot", transColor(player1))}></span></li>
+        <li className="flex pb-2">玩家2:{transPlayer(player2)}<span className={clsx("dot", transColor(player2))}></span></li>
         {
-          player1 !== 0 && <li className='flex'>當前輪到 {turn === 1 ? '玩家1' : '玩家2'}
+          player1 !== 0 && <li className='flex'>當前輪到 _ {turn === 1 ? '玩家1' : '玩家2'}
             <span className={clsx('dot', turn === 1 ? transColor(player1) : transColor(player2))}></span>
           </li>
         }
