@@ -153,10 +153,10 @@ function App() {
   return (
     <div className="App h-screen flex justify-center items-center">
       <ul className="top-8 text-xl text-left mr-6 border-dotted border-2 border-gray-500 p-4">
-        <li className="flex pb-2">玩家1:{transPlayer(player1)} <span className={clsx("dot", transColor(player1))}></span></li>
-        <li className="flex pb-2">玩家2:{transPlayer(player2)}<span className={clsx("dot", transColor(player2))}></span></li>
+        <li className="flex pb-2"><span className=" text-green-700 pr-1">玩家1: </span>{transPlayer(player1) || '?方'} <span className={clsx("dot", transColor(player1))}></span></li>
+        <li className="flex pb-2"><span className=" text-green-700 pr-1">玩家2: </span>{transPlayer(player2) || '?方'}<span className={clsx("dot", transColor(player2))}></span></li>
         {
-          player1 !== 0 && <li className='flex'>當前輪到 _ {turn === 1 ? '玩家1' : '玩家2'}
+          player1 !== 0 && <li className='flex'><span className=" text-green-700 pr-1">當前輪到: </span> {turn === 1 ? '玩家1' : '玩家2'}
             <span className={clsx('dot', turn === 1 ? transColor(player1) : transColor(player2))}></span>
           </li>
         }
